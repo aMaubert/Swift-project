@@ -10,22 +10,23 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var primaryColor: Color = .orange
-    @State var secondaryColor: Color = .white
-    @State var logged = false
+//    @State var primaryColor: Color = .orange
+//    @State var secondaryColor: Color = .white
+//    @State var logged = false
     
     var body: some View {
-        ZStack{
-            
-            LinearGradient(gradient: Gradient(colors: [self.primaryColor, self.secondaryColor]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
-            
-            
-            LoginView(secondaryColor: $secondaryColor,
-                      logged: $logged)
-              
-           
-        }
+        HomeView()
+//        ZStack{
+//
+//            LinearGradient(gradient: Gradient(colors: [self.primaryColor, self.secondaryColor]), startPoint: .top, endPoint: .bottom)
+//                .edgesIgnoringSafeArea(.all)
+//
+//
+//            LoginView(secondaryColor: $secondaryColor,
+//                      logged: $logged)
+//
+//
+//        }
     }
 }
 

@@ -20,7 +20,7 @@ struct HomeView: View {
         TabView {
             if logged == true {
                                         
-                propertiesView()
+                propertyListView()
                     .tabItem {
                         Text("Properties")
                         Image(systemName: "list.bullet")

@@ -8,15 +8,15 @@
 
 import SwiftUI
 
-struct propertiesView: View {
+struct propertyListView: View {
     var body: some View {
         
         NavigationView {
             List{
-                NavigationLink(destination: propertyDetails()) {
+                NavigationLink(destination: propertyDetailsView()) {
                     propertyRow()
                 }
-                NavigationLink(destination: propertyDetails()) {
+                NavigationLink(destination: propertyDetailsView()) {
                     propertyRow()
                 }
                 
@@ -40,16 +40,16 @@ struct propertyRow: View {
 
 
 
-struct propertyDetails: View {
-    
-    var body: some View {
-        Text("Details of property here")
-    }
-}
+//struct propertyDetails: View {
+//
+//    var body: some View {
+//        Text("Details of property here")
+//    }
+//}
 
 
 struct properties_Previews: PreviewProvider {
     static var previews: some View {
-        propertiesView()
+        propertyListView()
     }
 }

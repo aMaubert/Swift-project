@@ -47,6 +47,7 @@ struct LoginCardView: View {
     @Binding var secondaryColor: Color
     @Binding var logged: Bool
     @State var login: String = ""
+    @State var password = ""
     
     var body: some View {
         VStack{
@@ -61,12 +62,10 @@ struct LoginCardView: View {
                   .padding(.leading)
                   .padding(.trailing)
                   .textFieldStyle(RoundedBorderTextFieldStyle())
-                  .foregroundColor(secondaryColor)
-                TextField("Password", text: $login)
+                SecureField("Password", text: $password)
                   .padding(.leading)
                   .padding(.trailing)
                   .textFieldStyle(RoundedBorderTextFieldStyle())
-                  .foregroundColor(.red)
                 Spacer()
                   
               }.frame(width: 300, height: 300)
