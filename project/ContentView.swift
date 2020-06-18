@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var primaryColor: Color = .orange
+    @State var secondaryColor: Color = .white
+    @State var logged = false
+    
     var body: some View {
-        Text("Hello, World!")
+        ZStack{
+            
+            LinearGradient(gradient: Gradient(colors: [self.primaryColor, self.secondaryColor]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
+            
+            
+            LoginView(secondaryColor: $secondaryColor,
+                      logged: $logged)
+              
+           
+        }
     }
 }
 
@@ -19,3 +34,28 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+struct AppBarView: View {
+    
+    @Binding var secondaryColor: Color
+    
+    var body: some View {
+        HStack{
+            VStack(alignment: .leading){
+                Text("Where IS My Home")
+                    .font(Font.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(secondaryColor)
+                Text("Search your Home")
+                    .fontWeight(.medium)
+                    .foregroundColor(secondaryColor)
+            }
+            Spacer()
+            Image(systemName: "house.fill")
+                .font(.system(size: 72))
+                .foregroundColor(secondaryColor)
+            
+        }
+    }
+}
+
