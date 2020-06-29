@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9DB7D74424A35E52008A1FD8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7D74324A35E52008A1FD8 /* MapView.swift */; };
+		9DB7D74624A361AF008A1FD8 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7D74524A361AF008A1FD8 /* Checkpoint.swift */; };
 		9DFE9C8D249C023E00B8F516 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE9C7C249C023E00B8F516 /* login.swift */; };
 		9DFE9C8E249C023E00B8F516 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE9C7D249C023E00B8F516 /* HomeView.swift */; };
 		9DFE9C8F249C023E00B8F516 /* LogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE9C7E249C023E00B8F516 /* LogOutView.swift */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		9D523BB9249AABB2006E90AC /* sources.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sources.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DB7D74324A35E52008A1FD8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		9DB7D74524A361AF008A1FD8 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		9DFE9C7C249C023E00B8F516 /* login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 		9DFE9C7D249C023E00B8F516 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9DFE9C7E249C023E00B8F516 /* LogOutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOutView.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 				9DFE9C7C249C023E00B8F516 /* login.swift */,
 				9DFE9C7D249C023E00B8F516 /* HomeView.swift */,
 				9DFE9C7E249C023E00B8F516 /* LogOutView.swift */,
+				9DB7D74324A35E52008A1FD8 /* MapView.swift */,
 				9DFE9C7F249C023E00B8F516 /* AmenityListView.swift */,
 				9DFE9C80249C023E00B8F516 /* AmenityDetailsView.swift */,
 			);
@@ -101,6 +106,7 @@
 		9DFE9C82249C023E00B8F516 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				9DB7D74524A361AF008A1FD8 /* Checkpoint.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -194,6 +200,7 @@
 				9DFE9C9D249C070C00B8F516 /* propertyDetailsView.swift in Sources */,
 				9DFE9C8D249C023E00B8F516 /* login.swift in Sources */,
 				9DFE9C91249C023E00B8F516 /* AmenityDetailsView.swift in Sources */,
+				9DB7D74424A35E52008A1FD8 /* MapView.swift in Sources */,
 				9DFE9C8F249C023E00B8F516 /* LogOutView.swift in Sources */,
 				9DFE9C96249C023E00B8F516 /* ContentView.swift in Sources */,
 				9DFE9C95249C023E00B8F516 /* AppDelegate.swift in Sources */,
@@ -201,6 +208,7 @@
 				9DFE9C90249C023E00B8F516 /* AmenityListView.swift in Sources */,
 				9DFE9C8E249C023E00B8F516 /* HomeView.swift in Sources */,
 				9DFE9C9F249C081100B8F516 /* propertyListView.swift in Sources */,
+				9DB7D74624A361AF008A1FD8 /* Checkpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

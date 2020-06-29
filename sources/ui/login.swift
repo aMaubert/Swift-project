@@ -31,9 +31,7 @@ struct LoginView: View {
                   Spacer()
                   
               }.padding(.all )
-}
-           
-           
+            }
         }
         
         

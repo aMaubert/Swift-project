@@ -16,28 +16,28 @@ struct HomeView: View {
     
     
     var body: some View {
-        
-        TabView {
+        ZStack{
             if logged == true {
-                                        
-                propertyListView()
-                    .tabItem {
-                        Text("Properties")
-                        Image(systemName: "list.bullet")
-                    }
-                AmenityListView()
-                    .tabItem {
-                       Text("Amenities")
-                        Image(systemName: "list.bullet")
-                    }
-            
+                TabView {
                 
-                LogOutView(logged: $logged)
-                    .tabItem {
-                        Text("Log Out")
-                        Image(systemName: "square.and.arrow.up")
-                    }
-                                
+                        propertyListView()
+                            .tabItem {
+                                Text("Properties")
+                                Image(systemName: "list.bullet")
+                            }
+                        AmenityListView()
+                            .tabItem {
+                               Text("Amenities")
+                                Image(systemName: "list.bullet")
+                            }
+                    
+                        
+                        LogOutView(logged: $logged)
+                            .tabItem {
+                                Text("Log Out")
+                                Image(systemName: "square.and.arrow.up")
+                            }
+                }
             } else {
                     LoginView(secondaryColor: $secondaryColor,
                     logged: $logged)
