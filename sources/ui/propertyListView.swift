@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct propertyListView: View {
+    
+    @State private var isAddingProperty = false
+    
     var body: some View {
         
         NavigationView {
@@ -20,12 +23,15 @@ struct propertyListView: View {
                     propertyRow()
                 }
                 
-            }.navigationBarTitle("List des Propriétés")
-            .navigationBarItems( trailing:
-                HStack{
-                    Text("Add")
+            }.navigationBarTitle("Propriétés")
+                .navigationBarItems( trailing:
+                    Button("Add"){
+                        self.isAddingProperty.toggle()
+                    }
+                )
+                .sheet(isPresented: $isAddingProperty) {
+                        PropertyFormView()
                 }
-            )
         }
     }
 }
@@ -34,7 +40,18 @@ struct propertyListView: View {
 struct propertyRow: View {
     
     var body: some View {
-        Text("Row of property here")
+        HStack {
+            Button(action: {}) {
+                Image(systemName: "minus.circle.fill")
+                    .foregroundColor(.red)
+            }
+            Spacer()
+            VStack {
+                Text("Prix : 200 000 €")
+                Text("Surface : 100 ㎡")
+            }
+            Spacer()
+        }
     }
 }
 

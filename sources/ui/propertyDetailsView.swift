@@ -29,7 +29,7 @@ struct propertyDetailsView: View {
                         Spacer()
                         VStack(alignment: .leading) {
 
-                            Text("Price : Here the price")
+                            Text("Price : 230 000 euros")
                                 .bold()
                             Text("Transaction : En vente")
                                 .bold()
@@ -58,7 +58,7 @@ struct propertyDetailsView: View {
                     Spacer()
                     VStack(alignment: .leading) {
 
-                       Text("Price : Here the price")
+                       Text("Price : 230 000 euros")
                            .bold()
                        Text("Transaction : En vente")
                            .bold()
@@ -87,6 +87,15 @@ struct propertyDetailsView: View {
             .navigationBarItems(trailing: Button("Acheter") {
                 self.isBuying = true
             })
+            .actionSheet(isPresented: $isBuying) {
+                ActionSheet(title: Text("Acheter la propriété"),
+                            message: Text("Achat au prix de 230 000 euros"),
+                            buttons: [
+                                .default(Text("Acheter"), action: {}),
+                                .cancel()
+                            ]
+                )
+            }
         
     }
 }
