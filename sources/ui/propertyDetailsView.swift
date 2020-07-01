@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct propertyDetailsView: View {
-    @State var checkpoints = [
-          Checkpoint(title: "Gare de Nations", coordinate: .init(latitude: 48.862725, longitude: 2.287592))
-        ]
+    @State var checkpoints = Array<Checkpoint>()
     @State private var isBuying = false
+    private let distance : UInt = 20
+    @State private var propertyId: UInt64 = 8
     
     var body: some View {
             VStack {
@@ -77,7 +77,7 @@ struct propertyDetailsView: View {
                     Spacer()
                 }.frame(width: 400, height: 200)
                 Spacer()
-                NavigationLink(destination: MapView(checkpoints: $checkpoints)
+                NavigationLink(destination: MapView(propertyId: $propertyId)
                     .edgesIgnoringSafeArea(.all)
                 ) {
                     Text("Map View")
@@ -91,13 +91,15 @@ struct propertyDetailsView: View {
                 ActionSheet(title: Text("Acheter la propriété"),
                             message: Text("Achat au prix de 230 000 euros"),
                             buttons: [
-                                .default(Text("Acheter"), action: {}),
+                                .default(Text("Acheter"), action: {
+                                 
+                                }),
                                 .cancel()
                             ]
                 )
             }
-        
     }
+    
 }
 
 struct propertyDetailsView_Previews: PreviewProvider {

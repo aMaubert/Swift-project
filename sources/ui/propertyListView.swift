@@ -27,6 +27,7 @@ struct propertyListView: View {
                 .navigationBarItems( trailing:
                     Button("Add"){
                         self.isAddingProperty.toggle()
+                        
                     }
                 )
                 .sheet(isPresented: $isAddingProperty) {

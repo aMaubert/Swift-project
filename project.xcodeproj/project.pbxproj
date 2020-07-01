@@ -12,6 +12,7 @@
 		9D66834C24ACF7C400EA40AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834B24ACF7C400EA40AE /* User.swift */; };
 		9D66834E24ACF84500EA40AE /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834D24ACF84500EA40AE /* Account.swift */; };
 		9D66835024ACF90C00EA40AE /* Amenity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834F24ACF90C00EA40AE /* Amenity.swift */; };
+		9D66835924AD0E0C00EA40AE /* PropertyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66835824AD0E0C00EA40AE /* PropertyService.swift */; };
 		9DB7D74424A35E52008A1FD8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7D74324A35E52008A1FD8 /* MapView.swift */; };
 		9DB7D74624A361AF008A1FD8 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7D74524A361AF008A1FD8 /* Checkpoint.swift */; };
 		9DDDBED124AB29FA00EF74C4 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDDBED024AB29FA00EF74C4 /* Property.swift */; };
@@ -37,6 +38,7 @@
 		9D66834B24ACF7C400EA40AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9D66834D24ACF84500EA40AE /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		9D66834F24ACF90C00EA40AE /* Amenity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amenity.swift; sourceTree = "<group>"; };
+		9D66835824AD0E0C00EA40AE /* PropertyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PropertyService.swift; path = sources/services/PropertyService.swift; sourceTree = SOURCE_ROOT; };
 		9DB7D74324A35E52008A1FD8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		9DB7D74524A361AF008A1FD8 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		9DDDBED024AB29FA00EF74C4 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
@@ -83,9 +85,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9D66835524AD0D1800EA40AE /* services */ = {
+			isa = PBXGroup;
+			children = (
+				9D66835824AD0E0C00EA40AE /* PropertyService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		9DFE9C79249C023E00B8F516 /* sources */ = {
 			isa = PBXGroup;
 			children = (
+				9D66835524AD0D1800EA40AE /* services */,
 				9DFE9C7A249C023E00B8F516 /* ui */,
 				9DFE9C81249C023E00B8F516 /* Assets.xcassets */,
 				9DFE9C82249C023E00B8F516 /* models */,
@@ -229,6 +240,7 @@
 				9D66835024ACF90C00EA40AE /* Amenity.swift in Sources */,
 				9D66834E24ACF84500EA40AE /* Account.swift in Sources */,
 				9DFE9C90249C023E00B8F516 /* AmenityListView.swift in Sources */,
+				9D66835924AD0E0C00EA40AE /* PropertyService.swift in Sources */,
 				9D0DD81024AA5708000F8A1E /* PropertyFormView.swift in Sources */,
 				9DFE9C8E249C023E00B8F516 /* HomeView.swift in Sources */,
 				9DFE9C9F249C081100B8F516 /* propertyListView.swift in Sources */,

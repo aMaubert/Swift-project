@@ -7,7 +7,7 @@
 //
 
 
-struct Amenity {
+struct Amenity : Codable {
     var id: UInt64?
     var type: String
     var name: String

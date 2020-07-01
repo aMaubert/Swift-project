@@ -6,7 +6,7 @@
 //  Copyright © 2020 allan. All rights reserved.
 //
 
-struct Address {
+struct Address : Codable {
     
     var id: UInt64? = nil
     var propertyNumber: String

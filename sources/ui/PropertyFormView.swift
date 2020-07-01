@@ -21,7 +21,6 @@ struct PropertyFormView: View {
     @State private var city : String = ""
     @State private var country : String = ""
     
-    
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
@@ -64,6 +63,7 @@ struct PropertyFormView: View {
                         Button("Save") {
                             print("Test")
                             self.presentation.wrappedValue.dismiss()
+                            
                         }
                         Spacer()
                         Button("Cancel") {
