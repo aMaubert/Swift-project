@@ -17,5 +17,4 @@ final class Checkpoint: NSObject, MKAnnotation {
       self.title = title
       self.coordinate = coordinate
     }
-    
 }

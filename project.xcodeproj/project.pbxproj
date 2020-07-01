@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9D0DD81024AA5708000F8A1E /* PropertyFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DD80F24AA5708000F8A1E /* PropertyFormView.swift */; };
+		9D66834A24ACF62B00EA40AE /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834924ACF62B00EA40AE /* Address.swift */; };
+		9D66834C24ACF7C400EA40AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834B24ACF7C400EA40AE /* User.swift */; };
+		9D66834E24ACF84500EA40AE /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834D24ACF84500EA40AE /* Account.swift */; };
+		9D66835024ACF90C00EA40AE /* Amenity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834F24ACF90C00EA40AE /* Amenity.swift */; };
 		9DB7D74424A35E52008A1FD8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7D74324A35E52008A1FD8 /* MapView.swift */; };
 		9DB7D74624A361AF008A1FD8 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7D74524A361AF008A1FD8 /* Checkpoint.swift */; };
 		9DDDBED124AB29FA00EF74C4 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDDBED024AB29FA00EF74C4 /* Property.swift */; };
@@ -29,6 +33,10 @@
 /* Begin PBXFileReference section */
 		9D0DD80F24AA5708000F8A1E /* PropertyFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyFormView.swift; sourceTree = "<group>"; };
 		9D523BB9249AABB2006E90AC /* sources.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sources.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D66834924ACF62B00EA40AE /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		9D66834B24ACF7C400EA40AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9D66834D24ACF84500EA40AE /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		9D66834F24ACF90C00EA40AE /* Amenity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amenity.swift; sourceTree = "<group>"; };
 		9DB7D74324A35E52008A1FD8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		9DB7D74524A361AF008A1FD8 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		9DDDBED024AB29FA00EF74C4 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
@@ -113,6 +121,10 @@
 			children = (
 				9DB7D74524A361AF008A1FD8 /* Checkpoint.swift */,
 				9DDDBED024AB29FA00EF74C4 /* Property.swift */,
+				9D66834F24ACF90C00EA40AE /* Amenity.swift */,
+				9D66834B24ACF7C400EA40AE /* User.swift */,
+				9D66834D24ACF84500EA40AE /* Account.swift */,
+				9D66834924ACF62B00EA40AE /* Address.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -207,11 +219,15 @@
 				9DFE9C9D249C070C00B8F516 /* propertyDetailsView.swift in Sources */,
 				9DFE9C8D249C023E00B8F516 /* login.swift in Sources */,
 				9DFE9C91249C023E00B8F516 /* AmenityDetailsView.swift in Sources */,
+				9D66834C24ACF7C400EA40AE /* User.swift in Sources */,
 				9DB7D74424A35E52008A1FD8 /* MapView.swift in Sources */,
 				9DFE9C8F249C023E00B8F516 /* LogOutView.swift in Sources */,
 				9DFE9C96249C023E00B8F516 /* ContentView.swift in Sources */,
 				9DFE9C95249C023E00B8F516 /* AppDelegate.swift in Sources */,
 				9DFE9C98249C023E00B8F516 /* SceneDelegate.swift in Sources */,
+				9D66834A24ACF62B00EA40AE /* Address.swift in Sources */,
+				9D66835024ACF90C00EA40AE /* Amenity.swift in Sources */,
+				9D66834E24ACF84500EA40AE /* Account.swift in Sources */,
 				9DFE9C90249C023E00B8F516 /* AmenityListView.swift in Sources */,
 				9D0DD81024AA5708000F8A1E /* PropertyFormView.swift in Sources */,
 				9DFE9C8E249C023E00B8F516 /* HomeView.swift in Sources */,

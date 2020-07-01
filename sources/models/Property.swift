@@ -8,6 +8,15 @@
 
 
 struct Property {
+    
+    var id: UInt64?
+    var price: Double
+    var surface: Double
+    var rooms: Double
+    var address: Address
+    var isAvailable: Bool
+    var purchaser: User?
+    
     enum TransactionType : String, CaseIterable, Identifiable {
         case SALE, LEASING
         
