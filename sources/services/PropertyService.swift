@@ -10,29 +10,25 @@ import SwiftUI
 
 
 struct PropertyService {
-    private let baseUri = "http://localhost:8080/properties"
     
-    public func getAmenityInRange(id: UInt64, distance: UInt) {
+    public static let baseUri = "http://localhost:8080/properties"
+    
+    public static func makeUrlRequest(url: URL, httpMethod: String, bearerToken: String) -> URLRequest {
+         var request = URLRequest(url: url)
+         request.httpMethod = httpMethod
+         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+         request.addValue("application/json", forHTTPHeaderField: "Accept")
+         request.addValue(bearerToken, forHTTPHeaderField: "Authorization")
+         request.timeoutInterval = 2000000.0
         
-        //Get a session
-        let session = URLSession.shared
-        
-        guard let url = URL(string: "\(self.baseUri)/\(id)/amenities?distance=\(distance)") else {
-            return;
-        }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        let task = session.dataTask(with: url) { (data, response, error) in
-            
-            //Manage the result
-            guard error == nil else { return }
-            guard let data = data else { return }
-            
-            print(data)
-        }
-        
-        task.resume()
-        
+         return request
     }
+    
+    public static func decodeProperties(from data: Data) -> [Property]? {
+
+        let decoder = JSONDecoder()
+        let properties = try? decoder.decode([Property].self, from: data)
+        return properties
+    }
+
 }

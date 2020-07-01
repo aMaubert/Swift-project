@@ -6,7 +6,7 @@
 //  Copyright © 2020 allan. All rights reserved.
 //
 
-struct Account {
+struct Account : Codable {
     var id: UInt64?
     var login: String
     var password: String

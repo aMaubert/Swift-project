@@ -27,7 +27,7 @@ struct MapView: UIViewRepresentable {
     public func getAmenityInRange(id: UInt64, distance: UInt, uiView: MKMapView) {
         
         let baseUri = "http://localhost:8080/properties"
-        let bearerToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FkbWluLFJPTEVfVXNlciIsImV4cCI6MTU5MzYzODA3Mn0.KgGsj6pLsk4w52aX2kXHXSLQvN4gN2iiPg46xB7Si1w"
+        let bearerToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FkbWluLFJPTEVfVXNlciIsImV4cCI6MTU5MzY0NzY3OH0.V4llhsyLs_uTduMMHBos8GeFAlf3uZ3_WLo9yt8YUxA"
         
         //Get a session
         let session = URLSession.shared
@@ -76,11 +76,6 @@ struct MapView: UIViewRepresentable {
         let amenities = try? decoder.decode([Amenity].self, from: data)
         return amenities
     }
-    
-    
-    
-    
-    
     
 }
 

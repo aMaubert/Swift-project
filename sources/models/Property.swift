@@ -7,7 +7,7 @@
 //
 
 
-struct Property {
+struct Property : Codable, Identifiable {
     
     var id: UInt64?
     var price: Double
@@ -16,8 +16,9 @@ struct Property {
     var address: Address
     var isAvailable: Bool
     var purchaser: User?
+    var transactionType: TransactionType
     
-    enum TransactionType : String, CaseIterable, Identifiable {
+    enum TransactionType : String, Codable, CaseIterable, Identifiable {
         case SALE, LEASING
         
         var id: TransactionType {

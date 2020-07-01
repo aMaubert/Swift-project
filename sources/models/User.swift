@@ -6,7 +6,7 @@
 //  Copyright © 2020 allan. All rights reserved.
 //
 
-struct User {
+struct User : Codable {
     var id: UInt64?
     var lastName: String
     var firstName: String

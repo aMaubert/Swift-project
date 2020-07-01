@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct propertyDetailsView: View {
+    
+    @State var property : Property
     @State var checkpoints = Array<Checkpoint>()
     @State private var isBuying = false
     private let distance : UInt = 20
@@ -29,25 +31,25 @@ struct propertyDetailsView: View {
                         Spacer()
                         VStack(alignment: .leading) {
 
-                            Text("Price : 230 000 euros")
+                            Text("Price : \( self.property.price ) euros")
                                 .bold()
-                            Text("Transaction : En vente")
+                            Text("Transaction : \( self.property.transactionType.rawValue )")
                                 .bold()
-                            Text("La surface  : 4000 m2")
+                            Text("La surface  : \( self.property.surface ) m2")
                                 .bold()
-                            Text("Nombres de chambres  : 5")
+                            Text("Nombres de chambres  : \( self.property.rooms )")
                                 .bold()
-
-                            Text("Disponbile  : Oui")
+                            Text("Disponbile  : \( self.property.isAvailable ? "oui" : "non" )")
                                 .bold()
                                 .foregroundColor(.green)
-
-                            Text("Acheteur  : Jean Dupond")
+                            Text("Acheteur  : \( self.getUserName(property: self.property) )")
                                 .bold()
                         }
                         Spacer()
                     }
                 }.frame(height: 100, alignment: .topLeading)
+                Spacer()
+                Spacer()
                 Spacer()
 
                 VStack(alignment: .trailing) {
@@ -57,21 +59,13 @@ struct propertyDetailsView: View {
                         .foregroundColor(.white)
                     Spacer()
                     VStack(alignment: .leading) {
-
-                       Text("Price : 230 000 euros")
+                        Text("\(self.property.address.propertyNumber) \(self.property.address.streetName)")
                            .bold()
-                       Text("Transaction : En vente")
+                        Text("Ville : \(self.property.address.city)")
                            .bold()
-                       Text("La surface  : 4000 m2")
+                       Text("Pays  : \(self.property.address.country)")
                            .bold()
-                       Text("Nombres de chambres  : 5")
-                           .bold()
-
-                       Text("Disponbile  : Oui")
-                           .bold()
-                           .foregroundColor(.green)
-
-                       Text("Acheteur  : Jean Dupond")
+                        Text("Code postal : \(self.property.address.postalCode)")
                            .bold()
                     }.frame(width: 400)
                     Spacer()
@@ -83,13 +77,17 @@ struct propertyDetailsView: View {
                     Text("Map View")
                 }
                 Spacer()
-        }.navigationBarTitle("Property details")
+            }.onAppear{
+                if let propertyId = self.property.id {
+                    self.propertyId = propertyId
+                }
+            }.navigationBarTitle("Property details")
             .navigationBarItems(trailing: Button("Acheter") {
                 self.isBuying = true
             })
             .actionSheet(isPresented: $isBuying) {
                 ActionSheet(title: Text("Acheter la propriété"),
-                            message: Text("Achat au prix de 230 000 euros"),
+                            message: Text("Achat au prix de \(self.property.price) euros"),
                             buttons: [
                                 .default(Text("Acheter"), action: {
                                  
@@ -97,13 +95,24 @@ struct propertyDetailsView: View {
                                 .cancel()
                             ]
                 )
-            }
+        }
+    }
+    
+    func getUserName(property: Property) -> String {
+        if let user = property.purchaser {
+            return "\(user.firstName) \(user.lastName)"
+        }
+        return "Pas d'Acheteur"
     }
     
 }
 
 struct propertyDetailsView_Previews: PreviewProvider {
+    
+//    @State static var address = Address(id: 1, propertyNumber: "11A", streetName: "rue des entrechats", postalCode: 75002, city: "Paris", country: "France")
+    @State static var property = Property(id: 1, price: 200000, surface: 1234, rooms: 4, address: Address(id: 1, propertyNumber: "11A", streetName: "rue des entrechats", postalCode: 75002, city: "Paris", country: "France"), isAvailable: true, purchaser: nil, transactionType: Property.TransactionType.SALE)
+    
     static var previews: some View {
-        propertyDetailsView()
+        propertyDetailsView(property: property)
     }
 }
