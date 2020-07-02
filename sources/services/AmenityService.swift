@@ -1,18 +1,18 @@
 //
-//  PropertyService.swift
+//  AmenityService.swift
 //  project
 //
-//  Created by allan on 01/07/2020.
+//  Created by allan on 02/07/2020.
 //  Copyright © 2020 allan. All rights reserved.
 //
 
 import SwiftUI
 
-struct PropertyService {
+struct AmenityService {
     
     public static func baseUri() -> String {
         if let baseUri = StoreService.get(key: "API_BASE_URL") {
-            return "\(baseUri)/properties"
+            return "\(baseUri)/amenities"
         }
         return ""
     }
@@ -25,21 +25,18 @@ struct PropertyService {
          request.addValue("application/json", forHTTPHeaderField: "Accept")
          request.addValue(bearerToken, forHTTPHeaderField: "Authorization")
          request.timeoutInterval = 2000000.0
-        
          return request
     }
     
-    public static func decodeProperties(from data: Data) -> [Property]? {
-
+    public static func decodeAmenities(from data: Data) -> [Amenity]? {
         let decoder = JSONDecoder()
-        let properties = try? decoder.decode([Property].self, from: data)
-        return properties
+        let amenities = try? decoder.decode([Amenity].self, from: data)
+        return amenities
     }
     
-    public static func encodeProperty(property: Property) -> Data? {
-
+    public static func encodeAmenity(amenity: Amenity) -> Data? {
         let encoder = JSONEncoder()
-        let data = try? encoder.encode(property)
+        let data = try? encoder.encode(amenity)
         return data
     }
 

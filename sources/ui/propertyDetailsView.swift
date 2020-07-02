@@ -14,7 +14,7 @@ struct propertyDetailsView: View {
     @State var checkpoints = Array<Checkpoint>()
     @State private var isBuying = false
     private let distance : UInt = 20
-    @State private var propertyId: UInt64 = 8
+    @State private var propertyId: UInt64? = nil
     
     var body: some View {
             VStack {

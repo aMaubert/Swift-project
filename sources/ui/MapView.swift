@@ -12,12 +12,16 @@ import SwiftUI
 struct MapView: UIViewRepresentable {
     
     @State var checkpoints = Array<Checkpoint>()
-    @Binding var propertyId: UInt64
+    @Binding var propertyId: UInt64?
     var propertyCheckpoint: Checkpoint?
+
     
     func makeUIView(context: Context) -> MKMapView {
         let uiView =  MKMapView()
-        self.getAmenityInRange(id: self.propertyId, distance: 20, uiView: uiView)
+        
+        if let propertyId = self.propertyId {
+            self.getAmenityInRange(id: propertyId, distance: 20, uiView: uiView)
+        }
         if let propertyCheckpoint = self.propertyCheckpoint {
             uiView.addAnnotation(propertyCheckpoint)
             let region = MKCoordinateRegion(center: propertyCheckpoint.coordinate
@@ -90,7 +94,7 @@ struct MapView: UIViewRepresentable {
 }
 
 struct MapView_Previews: PreviewProvider {
-    @State static var id: UInt64 = 8
+    @State static var id: UInt64? = 8
 
     static var previews: some View {
         MapView(propertyId: $id)

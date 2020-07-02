@@ -19,24 +19,23 @@ struct HomeView: View {
         ZStack{
             if logged == true {
                 TabView {
+                    propertyListView()
+                        .tabItem {
+                            Text("Properties")
+                            Image(systemName: "list.bullet")
+                        }
+                    AmenityListView()
+                        .tabItem {
+                           Text("Amenities")
+                            Image(systemName: "list.bullet")
+                        }
                 
-                        propertyListView()
-                            .tabItem {
-                                Text("Properties")
-                                Image(systemName: "list.bullet")
-                            }
-                        AmenityListView()
-                            .tabItem {
-                               Text("Amenities")
-                                Image(systemName: "list.bullet")
-                            }
                     
-                        
-                        LogOutView(logged: $logged)
-                            .tabItem {
-                                Text("Log Out")
-                                Image(systemName: "square.and.arrow.up")
-                            }
+                    LogOutView(logged: $logged)
+                        .tabItem {
+                            Text("Log Out")
+                            Image(systemName: "square.and.arrow.up")
+                        }
                 }
             } else {
                     LoginView(secondaryColor: $secondaryColor,
