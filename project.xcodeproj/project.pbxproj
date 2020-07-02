@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9D0DD81024AA5708000F8A1E /* PropertyFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0DD80F24AA5708000F8A1E /* PropertyFormView.swift */; };
+		9D53CB0424AE423F005B8E10 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D53CB0324AE423F005B8E10 /* StoreService.swift */; };
 		9D66834A24ACF62B00EA40AE /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834924ACF62B00EA40AE /* Address.swift */; };
 		9D66834C24ACF7C400EA40AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834B24ACF7C400EA40AE /* User.swift */; };
 		9D66834E24ACF84500EA40AE /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834D24ACF84500EA40AE /* Account.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		9D0DD80F24AA5708000F8A1E /* PropertyFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyFormView.swift; sourceTree = "<group>"; };
 		9D523BB9249AABB2006E90AC /* sources.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sources.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D53CB0324AE423F005B8E10 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoreService.swift; path = sources/services/StoreService.swift; sourceTree = SOURCE_ROOT; };
 		9D66834924ACF62B00EA40AE /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		9D66834B24ACF7C400EA40AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9D66834D24ACF84500EA40AE /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		9D66835524AD0D1800EA40AE /* services */ = {
 			isa = PBXGroup;
 			children = (
+				9D53CB0324AE423F005B8E10 /* StoreService.swift */,
 				9D66835824AD0E0C00EA40AE /* PropertyService.swift */,
 			);
 			path = services;
@@ -245,6 +248,7 @@
 				9DFE9C8E249C023E00B8F516 /* HomeView.swift in Sources */,
 				9DFE9C9F249C081100B8F516 /* propertyListView.swift in Sources */,
 				9DB7D74624A361AF008A1FD8 /* Checkpoint.swift in Sources */,
+				9D53CB0424AE423F005B8E10 /* StoreService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

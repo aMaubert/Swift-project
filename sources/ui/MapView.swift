@@ -13,23 +13,31 @@ struct MapView: UIViewRepresentable {
     
     @State var checkpoints = Array<Checkpoint>()
     @Binding var propertyId: UInt64
+    var propertyCheckpoint: Checkpoint?
     
     func makeUIView(context: Context) -> MKMapView {
         let uiView =  MKMapView()
         self.getAmenityInRange(id: self.propertyId, distance: 20, uiView: uiView)
+        if let propertyCheckpoint = self.propertyCheckpoint {
+            uiView.addAnnotation(propertyCheckpoint)
+            let region = MKCoordinateRegion(center: propertyCheckpoint.coordinate
+                , span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+            uiView.setRegion(region, animated: true)
+        }
+        
         return uiView
     }
+    
     func updateUIView(_ uiView: MKMapView,
                       context: Context) {
         
     }
     
-    
-    
     public func getAmenityInRange(id: UInt64, distance: UInt, uiView: MKMapView) {
         
-        let baseUri = "http://localhost:8080/properties"
-        let bearerToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FkbWluLFJPTEVfVXNlciIsImV4cCI6MTU5MzY5MTA4N30.075d4xpE7xuTigE4x9XxizSqqNJy5YC6bSjCJmRugkA"
+        guard let bearerToken = StoreService.get(key: "TOKEN") else { return }
+        
+        let baseUri = PropertyService.baseUri()
         
         //Get a session
         let session = URLSession.shared

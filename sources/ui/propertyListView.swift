@@ -39,12 +39,12 @@ struct propertyListView: View {
     
     public func getAllProperties(){
         
-        let bearerToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FkbWluLFJPTEVfVXNlciIsImV4cCI6MTU5MzY5MTA4N30.075d4xpE7xuTigE4x9XxizSqqNJy5YC6bSjCJmRugkA"
+        guard let bearerToken = StoreService.get(key: "TOKEN") else { return }
         
         //Get a session
         let session = URLSession.shared
         
-        guard let url = URL(string: PropertyService.baseUri ) else {
+        guard let url = URL(string: PropertyService.baseUri() ) else {
             return;
         }
         
@@ -88,15 +88,6 @@ struct propertyRow: View {
         }
     }
 }
-
-
-
-//struct propertyDetails: View {
-//
-//    var body: some View {
-//        Text("Details of property here")
-//    }
-//}
 
 
 struct properties_Previews: PreviewProvider {

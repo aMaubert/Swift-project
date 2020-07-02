@@ -23,7 +23,7 @@ struct propertyDetailsView: View {
                 Spacer()
                 addressSectionView(property: self.property)
                 Spacer()
-                NavigationLink(destination: MapView(propertyId: $propertyId)
+                NavigationLink(destination: MapView(propertyId: $propertyId, propertyCheckpoint: self.propertyCheckpoint())
                     .edgesIgnoringSafeArea(.all)
                 ) {
                     HStack {
@@ -64,7 +64,17 @@ struct propertyDetailsView: View {
         }
     }
     
+    func propertyCheckpoint() -> Checkpoint? {
+        if let latitude = self.property.address.latitude,
+            let longitude = self.property.address.longitude {
+            return Checkpoint(title: "Bien", coordinate: .init(latitude: latitude, longitude: longitude))
+        }
+        return nil
+    }
+    
 }
+
+
 
 
 struct addressSectionView: View {
@@ -151,7 +161,6 @@ struct propertySectionView : View {
 
 struct propertyDetailsView_Previews: PreviewProvider {
     
-//    @State static var address = Address(id: 1, propertyNumber: "11A", streetName: "rue des entrechats", postalCode: 75002, city: "Paris", country: "France")
     @State static var property = Property(id: 1, price: 200000, surface: 1234, rooms: 4, address: Address(id: 1, propertyNumber: "11A", streetName: "rue des entrechats", postalCode: 75002, city: "Paris", country: "France"), isAvailable: true, purchaser: nil, transactionType: Property.TransactionType.SALE)
     
     static var previews: some View {

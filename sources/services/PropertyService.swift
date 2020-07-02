@@ -8,10 +8,15 @@
 
 import SwiftUI
 
-
 struct PropertyService {
     
-    public static let baseUri = "http://localhost:8080/properties"
+    public static func baseUri() -> String {
+        if let baseUri = StoreService.get(key: "API_BASE_URL") {
+            return "\(baseUri)/properties"
+        }
+        return ""
+    }
+    
     
     public static func makeUrlRequest(url: URL, httpMethod: String, bearerToken: String) -> URLRequest {
          var request = URLRequest(url: url)

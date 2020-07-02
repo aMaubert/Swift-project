@@ -13,7 +13,10 @@ struct ContentView: View {
     
     var body: some View {
         HomeView()
-
+            .onAppear {
+                StoreService.set(key: "API_BASE_URL", value: "http://localhost:8080")
+                StoreService.set(key: "TOKEN", value: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FkbWluLFJPTEVfVXNlciIsImV4cCI6MTU5MzcwOTg0M30.-8Bvvb9k7XOe0GXdVcwQKsM26uj97ef2aowO_du_PBQ")
+            }
     }
 }
 
