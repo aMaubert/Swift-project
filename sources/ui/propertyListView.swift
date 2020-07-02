@@ -39,7 +39,7 @@ struct propertyListView: View {
     
     public func getAllProperties(){
         
-        let bearerToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FkbWluLFJPTEVfVXNlciIsImV4cCI6MTU5MzY0NzY3OH0.V4llhsyLs_uTduMMHBos8GeFAlf3uZ3_WLo9yt8YUxA"
+        let bearerToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FkbWluLFJPTEVfVXNlciIsImV4cCI6MTU5MzY5MTA4N30.075d4xpE7xuTigE4x9XxizSqqNJy5YC6bSjCJmRugkA"
         
         //Get a session
         let session = URLSession.shared
@@ -53,19 +53,13 @@ struct propertyListView: View {
         let task = session.dataTask(with: request) { (data, response, error) in
 
             //Manage the result
-            guard error == nil else {
-                return
-            }
-            guard let data = data else {
-                return
-            }
+            guard error == nil else { return }
+            guard let data = data else { return }
 
             if let properties = PropertyService.decodeProperties(from: data) {
                 DispatchQueue.main.async {
                     self.properties = properties
                 }
-                
-               
             }
 
         }

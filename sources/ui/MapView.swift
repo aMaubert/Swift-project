@@ -15,11 +15,13 @@ struct MapView: UIViewRepresentable {
     @Binding var propertyId: UInt64
     
     func makeUIView(context: Context) -> MKMapView {
-        MKMapView()
+        let uiView =  MKMapView()
+        self.getAmenityInRange(id: self.propertyId, distance: 20, uiView: uiView)
+        return uiView
     }
     func updateUIView(_ uiView: MKMapView,
                       context: Context) {
-        self.getAmenityInRange(id: self.propertyId, distance: 20, uiView: uiView)
+        
     }
     
     
@@ -27,7 +29,7 @@ struct MapView: UIViewRepresentable {
     public func getAmenityInRange(id: UInt64, distance: UInt, uiView: MKMapView) {
         
         let baseUri = "http://localhost:8080/properties"
-        let bearerToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FkbWluLFJPTEVfVXNlciIsImV4cCI6MTU5MzY0NzY3OH0.V4llhsyLs_uTduMMHBos8GeFAlf3uZ3_WLo9yt8YUxA"
+        let bearerToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FkbWluLFJPTEVfVXNlciIsImV4cCI6MTU5MzY5MTA4N30.075d4xpE7xuTigE4x9XxizSqqNJy5YC6bSjCJmRugkA"
         
         //Get a session
         let session = URLSession.shared

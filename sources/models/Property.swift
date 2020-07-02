@@ -12,7 +12,7 @@ struct Property : Codable, Identifiable {
     var id: UInt64?
     var price: Double
     var surface: Double
-    var rooms: Double
+    var rooms: Int
     var address: Address
     var isAvailable: Bool
     var purchaser: User?
