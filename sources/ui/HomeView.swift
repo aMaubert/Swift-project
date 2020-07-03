@@ -21,19 +21,19 @@ struct HomeView: View {
                 TabView {
                     propertyListView()
                         .tabItem {
-                            Text("Properties")
+                            Text("Propriétés")
                             Image(systemName: "list.bullet")
                         }
                     AmenityListView()
                         .tabItem {
-                           Text("Amenities")
+                           Text("Services")
                             Image(systemName: "list.bullet")
                         }
                 
                     
                     LogOutView(logged: $logged)
                         .tabItem {
-                            Text("Log Out")
+                            Text("Déconnexion")
                             Image(systemName: "square.and.arrow.up")
                         }
                 }

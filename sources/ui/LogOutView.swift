@@ -15,7 +15,7 @@ struct LogOutView: View {
         Button(action: {
             self.logged = false
         }) {
-            Text("Log Out")
+            Text("Déconnexion")
             Image(systemName: "square.and.arrow.up")
         }
     }

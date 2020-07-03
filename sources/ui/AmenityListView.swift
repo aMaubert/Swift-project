@@ -11,6 +11,7 @@ import SwiftUI
 struct AmenityListView: View {
         
     @State private var amenities = [Amenity]()
+    @State private var displayForm: Bool = false
     
     var body: some View {
         NavigationView {
@@ -18,15 +19,20 @@ struct AmenityListView: View {
                 NavigationLink(destination: AmenityDetailsView(amenity: amenity)) {
                     AmenityRow(amenity: amenity)
                 }
-            }.navigationBarTitle("List des Amenities")
+            }.navigationBarTitle("Services")
                 .navigationBarItems( trailing:
                     HStack{
-                        Text("Add")
+                        AmenityAddButton(displayForm: $displayForm)
                     }
                 )
         }.onAppear {
             self.getAllAmenities()
         }
+        .sheet(isPresented: $displayForm){
+            AmenityFormView()
+        }
+            
+        
     }
     
     func getAllAmenities() {
@@ -56,7 +62,22 @@ struct AmenityListView: View {
         }
         task.resume()
     }
+}
+
+
+struct AmenityAddButton: View {
     
+    @Binding var displayForm : Bool
+    
+    var body: some View {
+        Button(action: {
+            self.displayForm.toggle()
+        }){
+            Image(systemName: "plus.circle.fill")
+            .resizable()
+            .frame(width: 30, height: 30)
+        }
+    }
 }
 
 struct AmenityRow: View {

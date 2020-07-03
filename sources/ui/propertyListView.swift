@@ -36,9 +36,7 @@ struct propertyListView: View {
             }
             .navigationBarTitle("Propriétés")
                 .navigationBarItems( trailing:
-                    Button("Add"){
-                        self.isAddingProperty.toggle()
-                    }
+                    PropertyAddButton(displayForm: $isAddingProperty)
                 )
                 .sheet(isPresented: $isAddingProperty, onDismiss: {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -119,6 +117,21 @@ struct propertyListView: View {
     }
 }
 
+
+struct PropertyAddButton: View {
+    
+    @Binding var displayForm : Bool
+    
+    var body: some View {
+        Button(action: {
+            self.displayForm.toggle()
+        }){
+            Image(systemName: "plus.circle.fill")
+            .resizable()
+            .frame(width: 30, height: 30)
+        }
+    }
+}
 
 struct propertyRow: View {
     

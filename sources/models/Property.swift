@@ -24,5 +24,6 @@ struct Property : Codable, Identifiable {
         var id: TransactionType {
             return self
         }
+    
     }
 }

@@ -28,26 +28,26 @@ struct PropertyFormView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Property members")) {
+                Section(header: Text("Propriété")) {
                     HStack {
                       Text("Prix : \(self.price)")
                       Slider(value: $price)
                     }
-                    Picker("Transaction type",
+                    Picker("Transaction",
                     selection: $transactionType) {
                         ForEach(Property.TransactionType.allCases) { transaction in
                             Text(transaction.rawValue)
                         }
                       }
                                    
-                    Stepper("rooms : \(self.rooms)", value: $rooms, in: 0...20, step: 1)
+                    Stepper("pièces : \(self.rooms)", value: $rooms, in: 0...20, step: 1)
                     HStack {
                         Text("surface : \(self.surface)")
                         Slider(value: $surface, in: 0...1000000,step: 10)
                     }
-                    
+
                 }
-                Section(header: Text("Address members")) {
+                Section(header: Text("Address")) {
                 
                     TextField("Numero de rue", text: $propertyNumber)
                     TextField("la Voie", text: $streetName)
@@ -61,7 +61,7 @@ struct PropertyFormView: View {
                 Section(header: Text("Envoyer le formulaire")) {
                     HStack(alignment: .center){
                         Spacer()
-                        Button("Save") {
+                        Button("Ajouter") {
                             let address = Address(propertyNumber: self.propertyNumber, streetName: self.streetName, postalCode: Int(self.postalCode)!, city: self.city, country: self.country)
                             
                             let property = Property(id: nil, price: self.price, surface: self.surface, rooms: self.rooms, address: address, isAvailable: false, purchaser: nil, transactionType: self.transactionType)
@@ -74,13 +74,13 @@ struct PropertyFormView: View {
                     
                     HStack{
                         Spacer()
-                        Button("Cancel") {
+                        Button("Annuler") {
                             self.presentation.wrappedValue.dismiss()
                         }
                         Spacer()
                     }
                 }
-            }.navigationBarTitle("Property  Form")
+            }.navigationBarTitle("Ajout d'une propriété")
         }
     }
     
@@ -118,7 +118,6 @@ struct PropertyFormView: View {
         task.resume()
         
     }
-    
 }
 
 struct PropertyFormView_Previews: PreviewProvider {

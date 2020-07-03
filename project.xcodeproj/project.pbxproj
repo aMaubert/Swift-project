@@ -15,6 +15,7 @@
 		9D66834E24ACF84500EA40AE /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834D24ACF84500EA40AE /* Account.swift */; };
 		9D66835024ACF90C00EA40AE /* Amenity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66834F24ACF90C00EA40AE /* Amenity.swift */; };
 		9D66835924AD0E0C00EA40AE /* PropertyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66835824AD0E0C00EA40AE /* PropertyService.swift */; };
+		9DA2D8B024AF3980008D8E9F /* AmenityFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA2D8AF24AF3980008D8E9F /* AmenityFormView.swift */; };
 		9DB7D74424A35E52008A1FD8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7D74324A35E52008A1FD8 /* MapView.swift */; };
 		9DB7D74624A361AF008A1FD8 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7D74524A361AF008A1FD8 /* Checkpoint.swift */; };
 		9DDDBED124AB29FA00EF74C4 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDDBED024AB29FA00EF74C4 /* Property.swift */; };
@@ -43,6 +44,7 @@
 		9D66834D24ACF84500EA40AE /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		9D66834F24ACF90C00EA40AE /* Amenity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amenity.swift; sourceTree = "<group>"; };
 		9D66835824AD0E0C00EA40AE /* PropertyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PropertyService.swift; path = sources/services/PropertyService.swift; sourceTree = SOURCE_ROOT; };
+		9DA2D8AF24AF3980008D8E9F /* AmenityFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmenityFormView.swift; sourceTree = "<group>"; };
 		9DB7D74324A35E52008A1FD8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		9DB7D74524A361AF008A1FD8 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		9DDDBED024AB29FA00EF74C4 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				9DB7D74324A35E52008A1FD8 /* MapView.swift */,
 				9DFE9C7F249C023E00B8F516 /* AmenityListView.swift */,
 				9DFE9C80249C023E00B8F516 /* AmenityDetailsView.swift */,
+				9DA2D8AF24AF3980008D8E9F /* AmenityFormView.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			files = (
 				9DDDBED124AB29FA00EF74C4 /* Property.swift in Sources */,
 				9DFE9C9D249C070C00B8F516 /* propertyDetailsView.swift in Sources */,
+				9DA2D8B024AF3980008D8E9F /* AmenityFormView.swift in Sources */,
 				9DFE9C8D249C023E00B8F516 /* login.swift in Sources */,
 				9DFE9C91249C023E00B8F516 /* AmenityDetailsView.swift in Sources */,
 				9D66834C24ACF7C400EA40AE /* User.swift in Sources */,
