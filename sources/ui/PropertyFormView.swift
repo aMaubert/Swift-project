@@ -85,13 +85,18 @@ struct PropertyFormView: View {
     }
     
     func postProperty(property: Property) {
-        guard let bearerToken = StoreService.get(key: "TOKEN") else { return }
+        guard let bearerToken = StoreService.get(key: "TOKEN") else {
+            self.error = true
+            return
+            
+        }
         
         //Get a session
         let session = URLSession.shared
         
         guard let url = URL(string: PropertyService.baseUri() ) else {
-            return;
+            self.error = true
+            return
         }
         
         
@@ -102,8 +107,13 @@ struct PropertyFormView: View {
         let task = session.dataTask(with: request) { (data, response, error) in
 
             //Manage the result
-            guard error == nil else { return }
-            guard data != nil else { return }
+            guard error == nil else {
+                self.error = true
+                return
+            }
+            guard data != nil else {
+                return
+            }
             
             if let response = response as? HTTPURLResponse {
                 if response.statusCode != 201 {

@@ -12,7 +12,7 @@ struct propertyListView: View {
     
     @State private var isAddingProperty = false
     @State private var properties = [Property]()
-    @State private var formError: Bool = false
+    @State private var error: Bool = false
     
     var body: some View {
         NavigationView {
@@ -32,20 +32,26 @@ struct propertyListView: View {
                         self.getAllProperties()
                     }
                 }
-                
             }
             .navigationBarTitle("Propriétés")
                 .navigationBarItems( trailing:
                     PropertyAddButton(displayForm: $isAddingProperty)
                 )
                 .sheet(isPresented: $isAddingProperty, onDismiss: {
+                    
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        self.getAllProperties()
+                        if self.error == true {
+                            print("error")
+                            return
+                        } else {
+                            self.getAllProperties()
+                        }
+                        
                     }
                 }) {
-                    PropertyFormView(error: self.$formError)
-            }.alert(isPresented: $formError) {
-                Alert(title: Text("Echec de l'ajout de la propriété .")
+                    PropertyFormView(error: self.$error)
+            }.alert(isPresented: $error) {
+                Alert(title: Text("Une erreur est survenu .")
                                 .foregroundColor(.red)
                                 .bold()
                 )
@@ -58,13 +64,18 @@ struct propertyListView: View {
     
     public func deletePropertyById(_ propertyId: UInt64) {
         
-        guard let bearerToken = StoreService.get(key: "TOKEN") else { return }
+        guard let bearerToken = StoreService.get(key: "TOKEN") else {
+            self.error = true
+            return
+            
+        }
         
         //Get a session
         let session = URLSession.shared
         
         guard let url = URL(string: "\(PropertyService.baseUri())/\(propertyId)" ) else {
-            return;
+            self.error = true
+            return
         }
         
         let request = PropertyService.makeUrlRequest( url:url, httpMethod: "DELETE", bearerToken: bearerToken)
@@ -72,13 +83,14 @@ struct propertyListView: View {
         let task = session.dataTask(with: request) { (data, response, error) in
             
             //Manage the result
-            guard error == nil else { return }
+            guard error == nil else {
+                self.error = true
+                return
+            }
             
             if let response = response as? HTTPURLResponse {
                 if response.statusCode != 200 {
-                    DispatchQueue.main.async {
-                        Alert(title: Text("Echec de la suppression ."))
-                    }
+                    self.error = true
                 }
             }
             
@@ -90,12 +102,16 @@ struct propertyListView: View {
     
     public func getAllProperties(){
         
-        guard let bearerToken = StoreService.get(key: "TOKEN") else { return }
+        guard let bearerToken = StoreService.get(key: "TOKEN") else {
+            self.error = true
+            return
+        }
         
         //Get a session
         let session = URLSession.shared
         
         guard let url = URL(string: PropertyService.baseUri() ) else {
+            self.error = true
             return;
         }
         
@@ -104,8 +120,14 @@ struct propertyListView: View {
         let task = session.dataTask(with: request) { (data, response, error) in
 
             //Manage the result
-            guard error == nil else { return }
-            guard let data = data else { return }
+            guard error == nil else {
+                self.error = true
+                return
+            }
+            guard let data = data else {
+                self.error = true
+                return
+            }
             if let properties = PropertyService.decodeProperties(from: data) {
                 DispatchQueue.main.async {
                     self.properties = properties

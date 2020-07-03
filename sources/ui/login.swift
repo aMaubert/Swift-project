@@ -8,9 +8,6 @@
 
 import SwiftUI
 
-
-
-
 struct LoginView: View {
     
     @Binding var secondaryColor: Color
@@ -33,8 +30,6 @@ struct LoginView: View {
               }.padding(.all )
             }
         }
-        
-        
     }
 }
 
@@ -111,15 +106,6 @@ struct LoginCardHeader: View {
         }
     }
 }
-
-
-//struct ContentView_Previews: PreviewProvider {
-//
-//    @State static var color = Color.white
-//    static var previews: some View {
-//        LoginView(secondaryColor: $color)
-//    }
-//}
 
 struct login_Previews: PreviewProvider {
     @State static var secondaryColor = Color.white
