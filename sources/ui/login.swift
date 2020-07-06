@@ -41,13 +41,14 @@ struct LoginCardView: View {
     @Binding var logged: Bool
     @State var login: String = ""
     @State var password = ""
+    @State var authentError = false
+    @State var authentErrorMessage = ""
     
     var body: some View {
         VStack{
             Spacer()
             HStack(alignment: .center){
               VStack(alignment: .center){
-                  
                 Spacer()
                 LoginCardHeader(secondaryColor: $secondaryColor)
                 Spacer()
@@ -68,8 +69,7 @@ struct LoginCardView: View {
             Spacer()
             
             Button(action: {
-                self.logged = true
-                               
+                self.authenticate()
            }){
                Text("Connexion")
                 .font(.title)
@@ -81,7 +81,67 @@ struct LoginCardView: View {
              .cornerRadius(45)
                 .padding([.leading, .trailing], 80)
         Spacer()
+        }.alert(isPresented: $authentError){
+            Alert(title: Text(self.authentErrorMessage)
+                            .foregroundColor(.red)
+                            .bold()
+            )
+            
+        }.onDisappear{
+            self.authentErrorMessage = ""
         }
+    }
+    
+    func authenticate() {
+        
+        let session = URLSession.shared
+        
+        
+        guard let url = URL(string: "\(AuthentService.baseUri())/login" ) else {
+            return
+        }
+        
+        var request = AuthentService.makeUrlRequest( url:url, httpMethod: "POST", bearerToken: nil)
+        
+        let accountLogin = AccountLogin(login: self.login, password: self.password)
+        request.httpBody = AuthentService.encodeAccountLogin(accountLogin)
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            
+            //Manage the result
+            guard error == nil else {
+                return
+            }
+             guard let data = data else {
+                print("Error, pas de data")
+                self.authentError = true
+                return
+            }
+            if let response = response as? HTTPURLResponse {
+                
+                
+                if response.statusCode == 403 {
+                    self.authentError = true
+                    self.authentErrorMessage = "Authntification failed ."
+                } else if response.statusCode != 200 {
+                    self.authentError = true
+                    self.authentErrorMessage = "Something failed . (code : \(response.statusCode))"
+                }
+            }
+            
+            guard let token = AuthentService.decodeToken(data) else {
+                self.authentError = true
+                return
+            }
+            
+            StoreService.set(key: "TOKEN", value: "Bearer \(token.token)")
+            self.logged = true
+            
+        }
+
+        task.resume()
+        
+        
     }
 }
 

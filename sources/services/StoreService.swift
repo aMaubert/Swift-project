@@ -12,7 +12,7 @@ struct StoreService {
     private static var storage = Dictionary<String, String>()
     
     
-    public static func set(key: String, value: String) {
+    public static func set(key: String, value: String?) {
         storage[key] = value
     }
     
