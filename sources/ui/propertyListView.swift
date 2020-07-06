@@ -128,10 +128,14 @@ struct propertyListView: View {
                 self.error = true
                 return
             }
+            print(String(data:data, encoding: .utf8)!)
+
             if let properties = PropertyService.decodeProperties(from: data) {
                 DispatchQueue.main.async {
                     self.properties = properties
                 }
+            } else {
+                print("error decode .")
             }
 
         }

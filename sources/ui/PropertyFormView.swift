@@ -124,10 +124,9 @@ struct PropertyFormView: View {
             }
             
         }
-        
         task.resume()
-        
     }
+   
 }
 
 struct PropertyFormView_Previews: PreviewProvider {

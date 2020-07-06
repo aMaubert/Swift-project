@@ -13,6 +13,4 @@ struct User : Codable {
     var phone: String
     var email: String
     var account: Account
-    
-    
 }

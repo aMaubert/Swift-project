@@ -36,6 +36,13 @@ struct PropertyService {
         return properties
     }
     
+    
+    public static func decodeProperty(from data: Data) -> Property? {
+        let decoder = JSONDecoder()
+        let property = try? decoder.decode(Property.self, from: data)
+        return property
+    }
+
     public static func encodeProperty(property: Property) -> Data? {
 
         let encoder = JSONEncoder()

@@ -15,6 +15,12 @@ struct propertyDetailsView: View {
     @State private var isBuying = false
     private let distance : UInt = 20
     @State private var propertyId: UInt64? = nil
+    private var hasBuyer : Bool {
+        if self.property.purchaser != nil {
+            return true
+        }
+        return false
+    }
     
     var body: some View {
             VStack {
@@ -45,18 +51,21 @@ struct propertyDetailsView: View {
                 Spacer()
             }.onAppear{
                 if let propertyId = self.property.id {
+                    print(propertyId)
                     self.propertyId = propertyId
                 }
              }
              .navigationBarTitle("Property details")
              .navigationBarItems(trailing: Button("Acheter") {
                 self.isBuying = true
-             })
+             }.disabled(self.hasBuyer)
+            )
              .actionSheet(isPresented: $isBuying) {
                 ActionSheet(title: Text("Acheter la propriété"),
                             message: Text("Achat au prix de \(self.property.price.rounded(.toNearestOrAwayFromZero)) euros"),
                             buttons: [
                                 .default(Text("Acheter"), action: {
+                                    self.buyProperty()
                                 }),
                                 .cancel()
                             ]
@@ -72,10 +81,89 @@ struct propertyDetailsView: View {
         return nil
     }
     
+    func buyProperty() {
+        
+         guard let bearerToken = StoreService.get(key: "TOKEN") else {
+            return
+         }
+
+         //Get a session
+         let session = URLSession.shared
+
+         guard let propertyId = property.id else { return }
+         guard let url = URL(string: "\(PropertyService.baseUri())/\(propertyId)/buy" ) else {
+            return
+         }
+        
+        let request = PropertyService.makeUrlRequest(url:url, httpMethod: "PUT", bearerToken: bearerToken)
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+
+            //Manage the result
+            guard error == nil else {
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode != 200 {
+                    print(response.statusCode)
+                }
+            }
+            
+            
+            if let property = PropertyService.decodeProperty(from: data) {
+                DispatchQueue.main.async {
+                    self.property = property
+                }
+            }
+            
+        }
+        task.resume()
+    }
+    
+    func fetchProperty() {
+        
+         guard let bearerToken = StoreService.get(key: "TOKEN") else {
+            return
+         }
+
+         //Get a session
+         let session = URLSession.shared
+
+         guard let propertyId = property.id else { return }
+         guard let url = URL(string: "\(PropertyService.baseUri())/\(propertyId)" ) else {
+            return
+         }
+        
+        let request = PropertyService.makeUrlRequest(url:url, httpMethod: "GET", bearerToken: bearerToken)
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+
+            //Manage the result
+            guard error == nil else {
+                return
+            }
+            guard data != nil else {
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode != 200 {
+                    print(response.statusCode)
+                }
+            }
+            
+            
+            
+        }
+        task.resume()
+    }
+    
+    
 }
-
-
-
 
 struct addressSectionView: View {
     
@@ -141,7 +229,10 @@ struct propertySectionView : View {
     }
     
     func getUserName(property: Property) -> String {
+        print("test \(property)")
        if let user = property.purchaser {
+            print("user \(user)")
+
            return "\(user.firstName) \(user.lastName)"
        }
        return "Pas d'Acheteur"

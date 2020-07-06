@@ -8,10 +8,10 @@
 
 struct Account : Codable {
     var id: UInt64?
-    var login: String
-    var password: String
-    var isAdmin: Bool
-    var isActivated: Bool = false
+    var login: String?
+    var password: String?
+    var admin: Bool
+    var activated: Bool = false
 }
 
 
