@@ -56,7 +56,6 @@ struct PropertyFormView: View {
                     TextField("Ville", text: $city)
                     TextField("pays", text: $country)
                     
-                    
                 }
                 Section(header: Text("Envoyer le formulaire")) {
                     HStack(alignment: .center){

@@ -16,12 +16,28 @@ struct AmenityListView: View {
     @State private var deleteError: Bool = false
     @State private var fetchError: Bool = false
     
+    @State public var error: Bool = false
+    
     var body: some View {
         NavigationView {
-            List(self.amenities){ amenity in
-                NavigationLink(destination: AmenityDetailsView(amenity: amenity)) {
-                    AmenityRow(amenity: amenity)
-                }
+            List{
+                ForEach(self.amenities, id: \.self.id){ amenity in
+                    NavigationLink(destination: AmenityDetailsView(amenity: amenity)) {
+                        AmenityRow(amenity: amenity)
+                    }
+                }.onDelete{ indexSet in
+                    indexSet.forEach { (index) in
+                       let amenity = self.amenities[index]
+                       if let amenityId = amenity.id {
+                           self.deleteAmenityById(amenityId)
+                       }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.getAllAmenities()
+                    }
+                    
+                 }
+                
             }.navigationBarTitle("Services")
                 .navigationBarItems( trailing:
                     HStack{
@@ -31,8 +47,17 @@ struct AmenityListView: View {
         }.onAppear {
             self.getAllAmenities()
         }
-        .sheet(isPresented: $displayForm){
-            AmenityFormView()
+        .sheet(isPresented: $displayForm, onDismiss: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+               if self.error == true {
+                   print("error")
+                   return
+               } else {
+                   self.getAllAmenities()
+               }
+             }
+        }){
+            AmenityFormView(error: self.$error)
         }.alert(isPresented: $formError) {
             Alert(title: Text("Echec de l'ajout du service .")
                             .foregroundColor(.red)
@@ -49,8 +74,6 @@ struct AmenityListView: View {
                             .bold()
             )
         }
-            
-        
     }
     
     func getAllAmenities() {
@@ -88,6 +111,42 @@ struct AmenityListView: View {
         }
         task.resume()
     }
+    
+    public func deleteAmenityById(_ amenityId: UInt64) {
+           
+           guard let bearerToken = StoreService.get(key: "TOKEN") else {
+               self.error = true
+               return
+               
+           }
+           
+           //Get a session
+           let session = URLSession.shared
+           
+           guard let url = URL(string: "\(AmenityService.baseUri())/\(amenityId)" ) else {
+               self.error = true
+               return
+           }
+           
+           let request = AmenityService.makeUrlRequest( url:url, httpMethod: "DELETE", bearerToken: bearerToken)
+           
+           let task = session.dataTask(with: request) { (data, response, error) in
+               
+               //Manage the result
+               guard error == nil else {
+                   self.error = true
+                   return
+               }
+               
+               if let response = response as? HTTPURLResponse {
+                   if response.statusCode != 200 {
+                       self.error = true
+                   }
+               }
+           }
+
+           task.resume()
+       }
 }
 
 
