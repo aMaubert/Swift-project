@@ -16,8 +16,7 @@ struct AmenityDetailsView: View {
     var body: some View {
         VStack(alignment: .leading) {
              Spacer()
-            Text(" name : \(self.amenity.name)")
-            Text(" type : \(self.amenity.type)")
+            Text(" type de service : \(self.amenity.type)")
             Spacer()
             Text(" Ville : \(self.amenity.address.city)")
             Text(" Pays : \(self.amenity.address.country)")
@@ -26,7 +25,7 @@ struct AmenityDetailsView: View {
             Spacer()
             MapView(propertyId: $propertyId, propertyCheckpoint: self.amenityCheckpoint())
             
-        }.navigationBarTitle("Service de proximité details")
+        }.navigationBarTitle(self.amenity.name)
     }
     
     func amenityCheckpoint() -> Checkpoint? {

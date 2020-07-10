@@ -29,9 +29,9 @@ struct PropertyFormView: View {
         NavigationView {
             Form {
                 Section(header: Text("Propriété")) {
-                    HStack {
-                      Text("Prix : \(self.price)")
-                      Slider(value: $price)
+                    VStack {
+                        Text("Prix : \(Formatter.formatDouble(self.price)) €")
+                        Slider(value: $price, in: 0.0...5000000, step: 1000)
                     }
                     Picker("Transaction",
                     selection: $transactionType) {
@@ -41,9 +41,9 @@ struct PropertyFormView: View {
                       }
                                    
                     Stepper("pièces : \(self.rooms)", value: $rooms, in: 0...20, step: 1)
-                    HStack {
-                        Text("surface : \(self.surface)")
-                        Slider(value: $surface, in: 0...1000000,step: 10)
+                    VStack {
+                        Text("surface : \(Formatter.formatDouble(self.surface)) ㎡")
+                        Slider(value: $surface, in: 0.0...1000,step: 2)
                     }
 
                 }
@@ -63,7 +63,7 @@ struct PropertyFormView: View {
                         Button("Ajouter") {
                             let address = Address(propertyNumber: self.propertyNumber, streetName: self.streetName, postalCode: Int(self.postalCode)!, city: self.city, country: self.country)
                             
-                            let property = Property(id: nil, price: self.price, surface: self.surface, rooms: self.rooms, address: address, isAvailable: false, purchaser: nil, transactionType: self.transactionType)
+                            let property = Property(id: nil, price: self.price, surface: self.surface, rooms: self.rooms, address: address, isAvailable: true, purchaser: nil, transactionType: self.transactionType)
                             self.postProperty(property: property)
                             self.presentation.wrappedValue.dismiss()
                             
@@ -87,7 +87,6 @@ struct PropertyFormView: View {
         guard let bearerToken = StoreService.get(key: "TOKEN") else {
             self.error = true
             return
-            
         }
         
         //Get a session

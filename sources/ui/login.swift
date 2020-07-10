@@ -122,10 +122,10 @@ struct LoginCardView: View {
                 
                 if response.statusCode == 403 {
                     self.authentError = true
-                    self.authentErrorMessage = "Authntification failed ."
+                    self.authentErrorMessage = "Mauvais Login ou mot de passe ."
                 } else if response.statusCode != 200 {
                     self.authentError = true
-                    self.authentErrorMessage = "Something failed . (code : \(response.statusCode))"
+                    self.authentErrorMessage = "Une erreur est survenue . (code : \(response.statusCode))"
                 }
             }
             

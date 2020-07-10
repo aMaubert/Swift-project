@@ -38,7 +38,6 @@ struct propertyListView: View {
                     PropertyAddButton(displayForm: $isAddingProperty)
                 )
                 .sheet(isPresented: $isAddingProperty, onDismiss: {
-                    
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         if self.error == true {
                             print("error")
@@ -46,7 +45,6 @@ struct propertyListView: View {
                         } else {
                             self.getAllProperties()
                         }
-                        
                     }
                 }) {
                     PropertyFormView(error: self.$error)
@@ -67,7 +65,6 @@ struct propertyListView: View {
         guard let bearerToken = StoreService.get(key: "TOKEN") else {
             self.error = true
             return
-            
         }
         
         //Get a session
@@ -168,8 +165,8 @@ struct propertyRow: View {
             HStack{
                 Spacer()
                 VStack(alignment: .leading) {
-                    Text("Prix : \(self.property.price) €")
-                    Text("Surface : \(self.property.surface) ㎡")
+                    Text("Prix : \(Formatter.formatDouble(self.property.price)) €")
+                    Text("Surface : \(Formatter.formatDouble(self.property.surface)) ㎡")
                 }
                 Spacer()
                 VStack(alignment: .leading) {

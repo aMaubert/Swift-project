@@ -62,7 +62,7 @@ struct propertyDetailsView: View {
             )
              .actionSheet(isPresented: $isBuying) {
                 ActionSheet(title: Text("Acheter la propriété"),
-                            message: Text("Achat au prix de \(self.property.price.rounded(.toNearestOrAwayFromZero)) euros"),
+                            message: Text("Achat au prix de \(Formatter.formatDouble(self.property.price)) €"),
                             buttons: [
                                 .default(Text("Acheter"), action: {
                                     self.buyProperty()
@@ -195,6 +195,13 @@ struct propertySectionView : View {
     
     var property: Property
     
+    var disponibilityColor : Color {
+        if self.property.isAvailable {
+            return Color.green
+        }
+        return Color.red
+    }
+    
     var body: some View {
         VStack {
             Text("Property")
@@ -209,17 +216,17 @@ struct propertySectionView : View {
                 Spacer()
                 VStack(alignment: .leading) {
 
-                    Text("Price : \( self.doubleToFormatedString(self.property.price)) euros")
+                    Text("Price : \( Formatter.formatDouble(self.property.price)) €")
                         .bold()
                     Text("Transaction : \( propertySectionView.transactionFormat(self.property.transactionType) )")
                         .bold()
-                    Text("La surface  : \( self.doubleToFormatedString(self.property.surface)) m2")
+                    Text("La surface  : \( Formatter.formatDouble(self.property.surface)) ㎡")
                         .bold()
                     Text("Pieces  : \( self.property.rooms )")
                         .bold()
-                    Text("Disponbile  : \( self.property.isAvailable ? "oui" : "non" )")
+                    Text("Disponbile  : \(self.property.isAvailable ? "oui" : "non")")
                         .bold()
-                        .foregroundColor(.green)
+                        .foregroundColor(self.disponibilityColor)
                     Text("Acheteur  : \( self.getUserName(property: self.property) )")
                         .bold()
                 }
@@ -243,10 +250,6 @@ struct propertySectionView : View {
             return "Vente"
         }
         return "Location"
-    }
-        
-    private func doubleToFormatedString(_ number: Double) -> String {
-        return String(format: "%.2f", number)
     }
 }
 
