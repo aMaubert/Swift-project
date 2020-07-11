@@ -15,13 +15,13 @@ struct AmenityDetailsView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-             Spacer()
-            Text(" type de service : \(self.amenity.type)")
             Spacer()
-            Text(" Ville : \(self.amenity.address.city)")
-            Text(" Pays : \(self.amenity.address.country)")
-            Text(" Address  : \(self.amenity.address.propertyNumber  + " " + self.amenity.address.streetName ) ")
-            Text(" Code postal : \(String(self.amenity.address.postalCode))")
+            Text("Type : \(self.amenity.type)")
+            Spacer()
+            Text("Ville : \(self.amenity.address.city)")
+            Text("Pays : \(self.amenity.address.country)")
+            Text("Adresse  : \(self.amenity.address.propertyNumber  + " " + self.amenity.address.streetName ) ")
+            Text("Code postal : \(String(self.amenity.address.postalCode))")
             Spacer()
             MapView(propertyId: $propertyId, propertyCheckpoint: self.amenityCheckpoint())
             

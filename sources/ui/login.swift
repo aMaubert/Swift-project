@@ -158,7 +158,7 @@ struct LoginCardHeader: View {
                 .scaledToFit()
                 .foregroundColor(secondaryColor)
             Spacer()
-            Text("Connnexion")
+            Text("Connexion")
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(secondaryColor)

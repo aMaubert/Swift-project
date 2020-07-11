@@ -16,7 +16,7 @@ struct propertyListView: View {
     
     var body: some View {
         NavigationView {
-            List{
+            List(){
                 ForEach(self.properties, id: \.self.id) { property in
                     NavigationLink(destination: propertyDetailsView(property: property)) {
                         propertyRow(property: property)
@@ -163,7 +163,6 @@ struct propertyRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack{
-                Spacer()
                 VStack(alignment: .leading) {
                     Text("Prix : \(Formatter.formatDouble(self.property.price)) €")
                     Text("Surface : \(Formatter.formatDouble(self.property.surface)) ㎡")

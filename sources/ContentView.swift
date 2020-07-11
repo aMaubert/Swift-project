@@ -33,7 +33,7 @@ struct AppBarView: View {
     var body: some View {
         HStack{
             VStack(alignment: .leading){
-                Text("Where IS My Home")
+                Text("Where's My Home")
                     .font(Font.title)
                     .fontWeight(.bold)
                     .foregroundColor(secondaryColor)

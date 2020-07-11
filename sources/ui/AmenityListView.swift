@@ -169,8 +169,8 @@ struct AmenityRow: View {
     var amenity: Amenity
     var body: some View {
         VStack(alignment: .leading) {
-            Text("nom : \(self.amenity.name)")
-            Text("type : \(self.amenity.type)")
+            Text("Nom : \(self.amenity.name)")
+            Text("Type : \(self.amenity.type)")
         }
     }
 }

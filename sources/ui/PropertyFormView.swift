@@ -36,25 +36,25 @@ struct PropertyFormView: View {
                     Picker("Transaction",
                     selection: $transactionType) {
                         ForEach(Property.TransactionType.allCases) { transaction in
-                            Text(transaction.rawValue)
+                            Text( PropertyFormView.transactionFormat(transaction))
                         }
                       }
                                    
-                    Stepper("pièces : \(self.rooms)", value: $rooms, in: 0...20, step: 1)
+                    Stepper("Pièce(s) : \(self.rooms)", value: $rooms, in: 0...20, step: 1)
                     VStack {
-                        Text("surface : \(Formatter.formatDouble(self.surface)) ㎡")
+                        Text("Surface : \(Formatter.formatDouble(self.surface)) ㎡")
                         Slider(value: $surface, in: 0.0...1000,step: 2)
                     }
 
                 }
-                Section(header: Text("Address")) {
+                Section(header: Text("Adresse")) {
                 
-                    TextField("Numero de rue", text: $propertyNumber)
-                    TextField("la Voie", text: $streetName)
+                    TextField("Numéro de rue", text: $propertyNumber)
+                    TextField("Voie", text: $streetName)
                     TextField("Code postal", text: $postalCode)
                         .keyboardType(.numberPad)
                     TextField("Ville", text: $city)
-                    TextField("pays", text: $country)
+                    TextField("Pays", text: $country)
                     
                 }
                 Section(header: Text("Envoyer le formulaire")) {
@@ -123,6 +123,13 @@ struct PropertyFormView: View {
             
         }
         task.resume()
+    }
+    
+    private static func transactionFormat(_ type: Property.TransactionType) -> String {
+        if type == Property.TransactionType.SALE {
+            return "Vente"
+        }
+        return "Location"
     }
    
 }

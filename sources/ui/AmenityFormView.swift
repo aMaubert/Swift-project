@@ -29,16 +29,16 @@ struct AmenityFormView: View {
             
             Form {
                 Section {
-                    TextField("Name : ", text: $name)
-                    TextField("Type : ", text: $type)
+                    TextField("Nom", text: $name)
+                    TextField("Type", text: $type)
                 }
-                Section(header: Text("Address")) {
-                    TextField("Numero de rue", text: $propertyNumber)
-                    TextField("la Voie", text: $streetName)
+                Section(header: Text("Adresse")) {
+                    TextField("Numéro de rue", text: $propertyNumber)
+                    TextField("Voie", text: $streetName)
                     TextField("Code postal", text: $postalCode)
                         .keyboardType(.numberPad)
                     TextField("Ville", text: $city)
-                    TextField("pays", text: $country)
+                    TextField("Pays", text: $country)
                 }
                 Section {
                     HStack{

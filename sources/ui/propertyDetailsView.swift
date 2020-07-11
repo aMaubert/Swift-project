@@ -55,7 +55,7 @@ struct propertyDetailsView: View {
                     self.propertyId = propertyId
                 }
              }
-             .navigationBarTitle("Property details")
+             .navigationBarTitle("Détails propriété")
              .navigationBarItems(trailing: Button("Acheter") {
                 self.isBuying = true
              }.disabled(self.hasBuyer)
@@ -67,7 +67,7 @@ struct propertyDetailsView: View {
                                 .default(Text("Acheter"), action: {
                                     self.buyProperty()
                                 }),
-                                .cancel()
+                                .cancel(Text("Annuler") )
                             ]
                 )
         }
@@ -171,7 +171,7 @@ struct addressSectionView: View {
     
     var body: some View {
         VStack(alignment: .trailing) {
-            Text("Address")
+            Text("Adresse")
                 .frame(width: 400, height: 30)
                 .background(Color(.gray))
                 .foregroundColor(.white)
@@ -204,7 +204,7 @@ struct propertySectionView : View {
     
     var body: some View {
         VStack {
-            Text("Property")
+            Text("Propriété")
             .frame(width: 400, height: 30)
             .background(Color(.gray))
             .foregroundColor(.white)
@@ -216,15 +216,15 @@ struct propertySectionView : View {
                 Spacer()
                 VStack(alignment: .leading) {
 
-                    Text("Price : \( Formatter.formatDouble(self.property.price)) €")
+                    Text("Prix : \( Formatter.formatDouble(self.property.price)) €")
                         .bold()
-                    Text("Transaction : \( propertySectionView.transactionFormat(self.property.transactionType) )")
+                    Text("Transaction : \( propertySectionView.transactionFormat(property.transactionType) )")
                         .bold()
-                    Text("La surface  : \( Formatter.formatDouble(self.property.surface)) ㎡")
+                    Text("Surface  : \( Formatter.formatDouble(self.property.surface)) ㎡")
                         .bold()
-                    Text("Pieces  : \( self.property.rooms )")
+                    Text("Pièces  : \( self.property.rooms )")
                         .bold()
-                    Text("Disponbile  : \(self.property.isAvailable ? "oui" : "non")")
+                    Text("Disponible  : \(self.property.isAvailable ? "oui" : "non")")
                         .bold()
                         .foregroundColor(self.disponibilityColor)
                     Text("Acheteur  : \( self.getUserName(property: self.property) )")

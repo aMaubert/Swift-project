@@ -66,7 +66,6 @@ struct MapView: UIViewRepresentable {
             print(String(data: data, encoding: .utf8)!)
             
             if let amenities = self.decodeAmenity(from: data) {
-                print(amenities[0].address)
                 for amenity in amenities {
                     if let latitude = amenity.address.latitude, let longitude =  amenity.address.longitude {
                         let checkpoint = Checkpoint(title: amenity.name, coordinate: .init(latitude: latitude,longitude:longitude))
